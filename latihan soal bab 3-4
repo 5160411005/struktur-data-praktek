@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+struct time
+{
+    int jam;
+    int men;
+};
+
+struct rencana
+{
+    struct time *awal;
+    struct time *akhir;
+};
+struct time jk={1,2};
+struct time kl={3,4};
+struct rencana kerja={&jk,&kl};
+
+int main()
+{
+    kerja.akhir->men=37;
+    cout<<kerja.awal->jam<<" "<<kerja.awal->men<<" "
+    <<kerja.akhir->jam<<" "<<kerja.akhir->men<<endl;
+}
