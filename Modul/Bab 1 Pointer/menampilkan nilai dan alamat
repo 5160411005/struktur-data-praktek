@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    long *p;
+    long x;
+
+    p=&x;
+    x=10;
+
+    cout<<"Nilai X  : "<<x<<endl;
+    cout<<"Nilai *P : "<<*p<<endl;
+    cout<<"Nilai P  : "<<p<<endl;
+    cout<<"Nilai &X : "<<&x<<endl;
+
+    *p=200;
+
+    cout<<"Nilai X  : "<<x<<endl;
+    cout<<"Nilai *P : "<<*p<<endl;
+    cout<<"Nilai P  : "<<p<<endl;
+    cout<<"Nilai &X : "<<&x<<endl;
+
+    return 0;
+}
