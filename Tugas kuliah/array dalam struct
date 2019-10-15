@@ -3,14 +3,21 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
+#include <windows.h>
 #define maks 100
 
 using namespace std;
 
+COORD coordinate;
+void gotoxy(int x,int y){
+    coordinate.X=x; coordinate.Y=y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coordinate);
+}
+
 struct TMhs
 {
-char NIM[9];
-char Nama[21];
+char NIM[25];
+char Nama[25];
 int NilaiUTS,NilaiUAS,NilaiQuis;
 float NilaiAkhir;
 char index;
@@ -47,16 +54,23 @@ mhs[i].index='E';
 }
 i++;
 cout<<"Apakah anda ingin melanjutkan input?(y/n) "; cin>>pil;
+system ("cls");
 }while(pil=='Y' || pil=='y');
 
-
-cout<<"Data yang telah dimasukkan adalah : \n";
-cout<<"------------------ \n";
-cout<<"| NIM\t | \tNAMA\t | QUIS | UTS | UAS | NA | INDEX | \n";
-cout<<"------------------ \n";
-for(i=0;i<stop;i++)
-{
-cout<< mhs[i].NIM << "\t" << mhs[i].Nama << "\t" << mhs[i].NilaiQuis << "\t" << mhs[i].NilaiUTS << "\t" << mhs[i].NilaiUAS << "\t" << mhs[i].NilaiAkhir << "\t" << mhs[i].index << "\t" << endl;
+cout <<"Data yang telah dimasukkan adalah : \n\n";
+cout <<" -------------------------------------------------------------------------------------------------------- \n";
+cout <<" |       NIM       |           NAMA           |   KUIS   |   UTS   |   UAS   |     NA     |    INDEX    | \n";
+cout <<" -------------------------------------------------------------------------------------------------------- \n";
+for(i=0;i<stop;i++){
+    gotoxy(1,5+i);   cout <<"|   " << mhs[i].NIM;
+    gotoxy(19,5+i);  cout <<"|   " << mhs[i].Nama;
+    gotoxy(46,5+i);  cout <<"|   " << mhs[i].NilaiQuis;
+    gotoxy(57,5+i);  cout <<"|   " << mhs[i].NilaiUTS;
+    gotoxy(67,5+i);  cout <<"|   " << mhs[i].NilaiUAS;
+    gotoxy(77,5+i);  cout <<"|   " << mhs[i].NilaiAkhir;
+    gotoxy(90,5+i);  cout <<"|   " << mhs[i].index;
+    gotoxy(104,5+i); cout <<"|   " << endl;
 }
-cout<<"------------------ \n";
+cout<<" -------------------------------------------------------------------------------------------------------- \n";
+getch();
 }
