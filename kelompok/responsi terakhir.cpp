@@ -1032,18 +1032,11 @@ public:
         
 int main()
 {
-char ulang;
+char ulang,ch,pilihan=NULL;
 long *p;
 long x;
-int i,pil,data[5],jml=0,sigma=0;
+int i,pil,n,m,nilai,nil,pilihan,dt[100],cr,data[5],jml=0,sigma=0,numbers[] = {102,21,83,42,11,10,9,3,20,27,15,92,2};
 float rata,stddeviasi;
-int n,m;
-int numbers[] = {102,21,83,42,11,10,9,3,20,27,15,92,2};
-int dt[100],cr,i,n;
-int nilai;
-char pilihan=NULL;
-int nil;
-char ch;
 Simpul*ditemukan;
 
 do{
@@ -1294,63 +1287,57 @@ do{
         case 13: system("cls");
           PohonSBBSTSeimbang sbbst;
           cout <<"Uji Pohon BST Seimbang\n";
-    do{
-        cout <<"\n Operasi-Operasi Pohon BST Seimbang\n";
-        cout <<"1. Sisisp "<<endl;
-        cout <<"2. Hitung Simpul"<<endl;
-        cout <<"3. Cari " << endl;
-        cout <<"4. Periksa Kosong " << endl;
-        cout <<"5. Membuat Kosong" <<endl;
-
-        int pilihan;
-        cout <<"Masukan Pilihan Anda :";
-        cin >> pilihan;
-
-        switch (pilihan)
-        {
-        case 1:
-            cout <<"Masukkan elemen integer yang akan disisipkan:";
-            cin >> nil;
-            sbbst.sisip(nil);
-            break;
-        case 2:
-            cout <<"Simpul = "<<endl;
-            sbbst.hitungSimpul();
-            break;
-        case 3 :
-            cout <<"Masukkan elemen integer yang akan dicari:";
-            cin >>nil;
-            if(sbbst.cari(nil))
+          do{
+            cout <<"\n Operasi-Operasi Pohon BST Seimbang\n";
+            cout <<"1. Sisisp "<<endl;
+            cout <<"2. Hitung Simpul"<<endl;
+            cout <<"3. Cari " << endl;
+            cout <<"4. Periksa Kosong " << endl;
+            cout <<"5. Membuat Kosong" <<endl;
+            cout <<"Masukan Pilihan Anda :";
+            cin >> pilihan;
+            switch (pilihan){
+            case 1:
+              cout <<"Masukkan elemen integer yang akan disisipkan:";
+              cin >> nil;
+              sbbst.sisip(nil);
+              break;
+            case 2:
+              cout <<"Simpul = "<<endl;
+              sbbst.hitungSimpul();
+              break;
+            case 3 :
+              cout <<"Masukkan elemen integer yang akan dicari:";
+              cin >>nil;
+              if(sbbst.cari(nil))
                 cout <<nil<<"ditemukan didalam pohon"<<endl;
-            else
+              else
                 cout <<nil<<"tidak ditemukan"<<endl;
-            break;
-        case 4 :
-            cout <<"status kosong=";
-            if(sbbst.apaKosong())
+              break;
+            case 4 :
+              cout <<"status kosong=";
+              if(sbbst.apaKosong())
                 cout <<"Pohon Kosong"<<endl;
-            else
+              else
                 cout <<"Pohon Tidak Kosong"<<endl;
-            break;
-        case 5 :
-            cout <<"\n Pohon dikosongkan\n";
-            sbbst.membuatKosong();
-            break;
-        default :
-            cout <<"Entri Salah\n ";
-            break;
-        }
-
-        cout <<"\n Post Order:";
-        sbbst.postorder();
-        cout <<"\n Pre Order:";
-        sbbst.preorder();
-        cout <<"\n In Order:";
-        sbbst.inorder();
-        cout <<"\n Anda Ingin Melnjutkan ? (ketik y atau t):";
-        cin >> ch;
-    }
-    while (ch=='Y'|| ch=='y');
+              break;
+            case 5 :
+              cout <<"\n Pohon dikosongkan\n";
+              sbbst.membuatKosong();
+              break;
+            default :
+              cout <<"Entri Salah\n ";
+              break;
+          }
+          cout <<"\n Post Order:";
+          sbbst.postorder();
+          cout <<"\n Pre Order:";
+          sbbst.preorder();
+          cout <<"\n In Order:";
+          sbbst.inorder();
+          cout <<"\n Anda Ingin Melnjutkan ? (ketik y atau t):";
+          cin >> ch;
+          }while (ch=='Y'|| ch=='y');
           cout<<endl;
           break;
         case 14:
