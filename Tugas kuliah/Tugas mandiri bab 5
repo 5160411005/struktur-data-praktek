@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int dt[100],cr,i,n;
+
+    cout<<"masukkan jumlah array = ";cin>>n;
+    for (i=1; i<=n; i++){
+        cout<<"masukkan data array ke-"<<i<<" = ";cin>>dt[i];
+    }
+    cout<<"masukkan nilai yang dicari = ";cin>>cr;
+    cout<<endl;
+
+    for (i=1; i<=n; i++){
+        if (dt[i]==cr){
+            cout<<"data ditemukan\n";
+            i=n;
+        }else if(i==n){
+            cout<<"data tidak ditemukan\n";
+        }
+    }
+    return 0;
+}

@@ -1,0 +1,140 @@
+#include <iostream>
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <windows.h>
+#define maks 100
+
+using namespace std;
+
+COORD coordinate;
+void gotoxy(int x,int y){
+    coordinate.X=x; coordinate.Y=y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coordinate);
+}
+
+struct data
+{
+int nim;
+char nama;
+float strukdat;
+float arsikom;
+float jarkom;
+float pbo;
+float so;
+}temp,c;
+
+int main()
+{
+data dt[maks];
+int pil,n,i,j;
+char ulang;
+do{
+    cout<<"\t|==================================|"<<endl;
+    cout<<"\t|+|+|+| DATA NILAI MAHASISWA |+|+|+|"<<endl;
+    cout<<"\t|==================================|"<<endl;
+    cout<<"\t|----------------------------------|"<<endl;
+    cout<<"\t|            MENU UTAMA            |"<<endl;
+    cout<<"\t|----------------------------------|"<<endl;
+    cout<<"\t|                                  |"<<endl;
+    cout<<"\t|  1. INPUT DATA MAHASISWA         |"<<endl;
+    cout<<"\t|  2. MENGURUTKAN DATA MAHASISWA   |"<<endl;
+    cout<<"\t|  3. MENCARI DATA MAHASISWA       |"<<endl;
+    cout<<"\t|  4. KELUAR                       |"<<endl;
+    cout<<"\t|                                  |"<<endl;
+    cout<<"\t|==================================|"<<endl;
+    cout<<endl;
+    cout<<"\tPilih [1/2/3/4] : ";cin>>pil;
+    switch(pil){
+        case 1:
+            system ("cls");
+            cout<<"================================="<<endl;
+            cout<<"BANYAK DATA YANG DI INPUT : ";cin>>n;
+            cout<<"================================="<<endl;
+            for(i=1;i<=n;i++){
+                cout<<"NIM      : " ; cin>>dt[i].nim;
+                cout<<"NAMA     : " ; cin>>dt[i].nama;
+                cout<<"STRUKDAT : " ; cin>>dt[i].strukdat;
+                cout<<"ARSIKOM  : " ; cin>>dt[i].arsikom;
+                cout<<"JARKOM   : " ; cin>>dt[i].jarkom;
+                cout<<"PBO      : " ; cin>>dt[i].pbo;
+                cout<<"SO       : " ; cin>>dt[i].so;
+                cout<<"================================="<<endl;
+            }
+            cout<<endl;
+            break;
+        case 2:
+            system ("cls");
+            for(i=1;i<=n;i++){
+                for(j=1;j<=n;j++){
+                    if(dt[i].nim<dt[j].nim){
+                        temp.nim=dt[i].nim;
+                        dt[i].nim=dt[j].nim;
+                        dt[j].nim=temp.nim;
+                    }
+                }
+            }
+            cout <<" |===========================================================================================| \n";
+            cout <<" |+|+|+|+|+|+|+|+|                    DATA NILAI MAHASISWA                   |+|+|+|+|+|+|+|+| \n";
+            cout <<" |===========================================================================================| \n";
+            cout <<" |         NIM         |         NAMA         |  STRUKDAT  |  ARSIKOM  |  JARKOM  | PBO | SO | \n";
+            cout <<" |===========================================================================================| \n";
+            for(i=1;i<=n;i++){
+                gotoxy(0,4+i);  cout <<" | " << dt[i].nim;
+                gotoxy(21,4+i); cout <<" | " << dt[i].nama;
+                gotoxy(41,4+i); cout <<" | " << dt[i].strukdat;
+                gotoxy(50,4+i); cout <<" | " << dt[i].arsikom;
+                gotoxy(58,4+i); cout <<" | " << dt[i].jarkom;
+                gotoxy(61,4+i); cout <<" | " << dt[i].pbo;
+                gotoxy(63,4+i); cout <<" | " << dt[i].so;
+                gotoxy(93,4+i); cout <<" | " << endl;
+            }
+            cout <<" |===========================================================================================| \n";
+            cout<<endl;
+            break;
+        case 3:
+            system ("cls");
+            cout<<"=================================================="<<endl;
+            cout<<"KATA KUNCI PENCARIAN (NIM) : ";cin>>c.nim;
+            cout<<"=================================================="<<endl;
+            for(i=1; i<n;i++){
+                if (dt[i].nim==c.nim){
+                    temp.nim=dt[i].nim;
+                }
+            }
+            if (temp.nim==c.nim){
+                cout<<"NIM      : "<<dt[i].nim<<endl;
+                cout<<"NAMA     : "<<dt[i].nama<<endl;
+                cout<<"STRUKDAT : "<<dt[i].strukdat<<endl;
+                cout<<"ARSIKOM  : "<<dt[i].arsikom<<endl;
+                cout<<"JARKOM   : "<<dt[i].jarkom<<endl;
+                cout<<"PBO      : "<<dt[i].pbo<<endl;
+                cout<<"SO       : "<<dt[i].so<<endl;
+                cout<<"=================================================="<<endl;
+            }else{
+                cout<<"\n=================================================="<<endl;
+                cout<<"| NIM YANG ANDA MASUKKAN TIDAK ADA DALAM DATA !! |";
+                cout<<"=================================================="<<endl;
+            }
+            cout<<endl;
+            break;
+        case 4:
+            ulang='n';
+            cout <<" \nTerimakasih [tekan enter 2x untuk keluar]";
+            getch();
+            return 0;
+            break;
+        default:
+            cout<<"================================="<<endl;
+            cout<<"|  MENU TIDAK TERIDENTIFIKASI!! |\n";
+            cout<<"================================="<<endl;
+            cout<<endl;
+            break;
+    }
+    i++;
+    cout<<"Apakah anda ingin melanjutkan input ?(y/n) "; cin>>ulang;
+    system ("cls");
+} while(ulang=='Y' || ulang=='y');
+cout <<" \nTerimakasih [tekan enter 2x untuk keluar]";
+}
